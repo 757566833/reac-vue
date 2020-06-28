@@ -1,0 +1,21 @@
+.egu-saas-layout-loading{
+    height: 100%;
+
+}
+.egu-saas-layout-body{
+    background-color: #ececec;
+    // padding: 12px;
+    height: 100%;
+    // overflow: auto;
+    // overflow: hidden;
+    .ant-spin-nested-loading{
+        height: 100%;
+
+        .ant-spin-container{
+            height: 100%;
+        }
+    }
+    .egu-saas-layout-root{
+      height: 100%;
+    }
+}

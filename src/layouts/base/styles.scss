@@ -1,0 +1,33 @@
+.egu-layout-loading-wrapper {
+    &>div{
+        .egu-layout-loading.max-HW {
+            max-height: none;
+        }
+    }
+    
+}
+
+.egu-layout {
+
+
+    .egu-layout-logo {
+        height: 64px;
+    }
+
+    .egu-layout-header {
+        .egu-layout-header-item {
+            height: 64px;
+            line-height: 64px;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 0 24px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .egu-layout-header-item-selected {
+            color: #ffffff;
+        }
+    }
+}

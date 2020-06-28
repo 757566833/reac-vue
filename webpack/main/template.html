@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<script>
+  var testLocation = ['192.168', 'localhost', '0.0.0.0','127.0.0']
+  window.httpApi = '';
+  for (const iterator of testLocation) {
+    if (window.location.href.includes(iterator)) {
+      window.httpApi = '//show.egutech.cn'
+    }
+  }
+</script>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<script src="https://static.egutech.cn/react/16.13.0/umd/react.production.min.js"></script>
+<script src="https://static.egutech.cn/react-dom/16.13.0/umd/react-dom.production.min.js"></script>
+<script src="https://static.egutech.cn/react-router/5.2.0/umd/react-router.min.js"></script>
+<script src="https://static.egutech.cn/react-router-dom/5.2.0/umd/react-router-dom.min.js"></script>
+<link rel="stylesheet" href="https://static.egutech.cn/antd/4.3.1/umd/antd.min.css">
+<script src="https://static.egutech.cn/antd/4.3.1/umd/antd.min.js" type="text/javascript"></script>
+
+<body>
+  <div id='root' />
+</body>
+
+</html>

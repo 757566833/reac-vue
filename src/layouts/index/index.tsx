@@ -7,7 +7,7 @@ import menu from '@/menu';
 import { EMenuType, IMenuBean } from '@/menu/interface';
 import Body from '../components/body';
 import { useDispatch } from 'react-redux';
-
+// 根据url获取当前有没有这个tab
 const getTab = (url: string): IMenuBean | undefined => {
   if (url == '/') {
     return undefined;
@@ -151,6 +151,7 @@ const Index: React.FC = () => {
                           ''}`
             }
           >
+            {/* 最终渲染用的组件 */}
             <Body id={pane.id} />
           </TabPane>
         ))}

@@ -18,18 +18,14 @@ const config: webpack.Configuration = merge(common, {
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM',
-    'react-router': 'ReactRouter',
-    'react-router-dom': 'ReactRouterDOM',
+    // 'react-router': 'ReactRouter',
+    // 'react-router-dom': 'ReactRouterDOM',
     'antd': 'antd',
   },
   plugins: [
     new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['r/**/*'],
-    }),
-    new webpack.DefinePlugin({
-      ENV_MODE: JSON.stringify('production'),
-
     }),
     new webpack.DefinePlugin({
       ENV_MODE: JSON.stringify('production'),

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useCallback, useState } from 'react';
 import './styles.scss';
 import { Layout, Menu, Spin } from 'antd';
@@ -19,7 +18,7 @@ import {
   setAuthorityMapOnBase,
   setModuleMapOnBase,
 } from '@/redux/action';
-
+// 获取权限map和module type的工具方法 参考意义不大 最好自己实现自己的menus逻辑
 const mapAuthorityAndModule = (
     data: IMenuBean[],
     authorityMap: { [key: string]: boolean },
@@ -47,6 +46,7 @@ const mapAuthorityAndModule = (
   });
   return menuData;
 };
+// header上面的一级导航 
 const HeaderDom: React.FC = () => {
   const menus = useSelector(
       useCallback((storeData: IState) => storeData.menus, []),
@@ -79,10 +79,11 @@ const HeaderDom: React.FC = () => {
     })}
   </Header>;
 };
+// 优化
 const HeaderMemo = React.memo(HeaderDom, () => {
   return true;
 });
-
+// 获取当前选中状态 参考意义不大
 const getSelectedKey = (url: string, array: string[] = []) => {
   url = url.split('?')[0];
   if (url[url.length - 1] != '/') {
@@ -92,20 +93,17 @@ const getSelectedKey = (url: string, array: string[] = []) => {
   const data = url.match(ex);
   if (data) {
     const item = data[0].slice(0, data[0].length - 1);
-
     if (array.length == 0) {
       array.push(item);
     } else {
       array.push(`${array[array.length - 1]}${item}`);
     }
-
-
     url = url.replace(item, '');
     getSelectedKey(url, array);
   }
   return array;
 };
-
+// 左侧menus
 const MenuDom: React.FC = () => {
   const menus = useSelector(
       useCallback((storeData: IState) => storeData.menus, []),
@@ -116,7 +114,6 @@ const MenuDom: React.FC = () => {
     let selected = '';
     if (url.split('/')[1]) {
       selected = url.split('/')[1];
-
       let _menu: IMenuBean[] | undefined = [];
       for (const iterator of menus) {
         if (iterator.path.replace(/\//g, '') == selected) {
@@ -132,7 +129,7 @@ const MenuDom: React.FC = () => {
     getMenu();
   }, [url, menus, getMenu]);
 
-
+// 渲染函数
   const renderMenu = (item: IMenuBean) => {
     if (item.type == EMenuType.Item) {
       return <Menu.Item key={item.path}>
@@ -166,6 +163,7 @@ const MenuDom: React.FC = () => {
     })}
   </Menu>;
 };
+// 优化
 const MenuMemo = React.memo(MenuDom, () => {
   return true;
 });
@@ -173,6 +171,7 @@ const MenuMemo = React.memo(MenuDom, () => {
 const Base: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  // 获取权限 menus 并传入redux
   const getAuthority =useCallback( async () => {
     setLoading(true);
     const authorityMap = await getWebAuthority();
@@ -211,14 +210,12 @@ const Base: React.FC = () => {
         <Layout className={'site-layout'}>
           <HeaderMemo />
           <Content>
+            {/* 内容部分主要是这个index */}
             <Index />
           </Content>
         </Layout>
       </Layout>
-
-      {/* </Spin> */}
     </>
   );
 };
 export default Base;
-

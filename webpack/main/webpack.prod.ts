@@ -11,8 +11,8 @@ const config: webpack.Configuration = merge(common, {
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM',
-    'react-router': 'ReactRouter',
-    'react-router-dom': 'ReactRouterDOM',
+    // 'react-router': 'ReactRouter',
+    // 'react-router-dom': 'ReactRouterDOM',
     'antd': 'antd',
   },
   output: {

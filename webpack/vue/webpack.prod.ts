@@ -24,10 +24,6 @@ const config: webpack.Configuration = merge(common, {
       ENV_MODE: JSON.stringify('production'),
 
     }),
-    new webpack.DefinePlugin({
-      ENV_MODE: JSON.stringify('production'),
-
-    }),
   ],
 });
 
